@@ -1,6 +1,7 @@
 import json
 import pymysql
 import os
+import time
 from datetime import datetime
 
 # Configuration de la base de données
@@ -108,12 +109,13 @@ def process_objects(json_file):
 # Main
 if __name__ == "__main__":
     objects_dir = "./partage/objects"
-    print("Traitement des objets...")
+    print("Démarrage du traitement périodique des objets...")
 
-    for filename in os.listdir(objects_dir):
-        if filename.lower().endswith(".json"):
-            file_path = os.path.join(objects_dir, filename)
-            print(f"Traitement du fichier : {file_path}")
-            process_objects(file_path)
-
-    print("Traitement terminé.")
+    while True:
+        for filename in os.listdir(objects_dir):
+            if filename.lower().endswith(".json"):
+                file_path = os.path.join(objects_dir, filename)
+                print(f"Traitement du fichier : {file_path}")
+                process_objects(file_path)
+        print("Attente de 5 minutes avant le prochain traitement...")
+        time.sleep(300)
