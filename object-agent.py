@@ -1,5 +1,6 @@
 import json
 import pymysql
+import re
 import os
 import time
 from datetime import datetime
@@ -16,16 +17,18 @@ db_config = {
 # Fonction pour convertir les dates JSON au format MySQL
 def convert_json_date(json_date):
     """
-    Convertit une date JSON du format /Date(1747383403000)/ en format MySQL 'YYYY-MM-DD HH:MM:SS'
+    Convertit une date JSON du format /Date(1747383403000)/ en format MySQL 'YYYY-MM-DD HH:MM:SS'.
+    Retourne None si la date est absente ou invalide.
     """
-    if not json_date:
+    if not json_date or not isinstance(json_date, str):
         return None
     match = re.search(r'/Date\((\d+)\)/', json_date)
     if match:
         timestamp = int(match.group(1)) // 1000
-        return datetime.fromtimestamp(timestamp).strftime('%Y-%m-%d %H:%M:%S')
-    else:
-        return None
+        # Vérifie que le timestamp est raisonnable (exclut 0 ou dates trop anciennes)
+        if timestamp > 1000000000:  # ~2001-09-09
+            return datetime.fromtimestamp(timestamp).strftime('%Y-%m-%d %H:%M:%S')
+    return None
 
 # Connexion à la base de données
 def connect_db():
