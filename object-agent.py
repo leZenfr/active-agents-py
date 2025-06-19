@@ -15,8 +15,17 @@ db_config = {
 
 # Fonction pour convertir les dates JSON au format MySQL
 def convert_json_date(json_date):
-    timestamp = int(json_date.strip("/Date()\\/")) // 1000
-    return datetime.fromtimestamp(timestamp).strftime('%Y-%m-%d %H:%M:%S')
+    """
+    Convertit une date JSON du format /Date(1747383403000)/ en format MySQL 'YYYY-MM-DD HH:MM:SS'
+    """
+    if not json_date:
+        return None
+    match = re.search(r'/Date\((\d+)\)/', json_date)
+    if match:
+        timestamp = int(match.group(1)) // 1000
+        return datetime.fromtimestamp(timestamp).strftime('%Y-%m-%d %H:%M:%S')
+    else:
+        return None
 
 # Connexion à la base de données
 def connect_db():
