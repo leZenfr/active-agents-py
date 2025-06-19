@@ -1,0 +1,470 @@
+﻿{
+    "groups":  [
+                   {
+                       "objectSid":  "S-1-5-21-554117985-1834987702-4043321877-515",
+                       "member":  "",
+                       "distinguishedName":  "CN=Ordinateurs du domaine,CN=Users,DC=cat,DC=love",
+                       "whenChanged":  "\/Date(1747383403000)\/",
+                       "whenCreated":  "\/Date(1747383403000)\/"
+                   },
+                   {
+                       "objectSid":  "S-1-5-21-554117985-1834987702-4043321877-516",
+                       "member":  "",
+                       "distinguishedName":  "CN=Contrôleurs de domaine,CN=Users,DC=cat,DC=love",
+                       "whenChanged":  "\/Date(1747384874000)\/",
+                       "whenCreated":  "\/Date(1747383403000)\/"
+                   },
+                   {
+                       "objectSid":  "S-1-5-21-554117985-1834987702-4043321877-518",
+                       "member":  "",
+                       "distinguishedName":  "CN=Administrateurs du schéma,CN=Users,DC=cat,DC=love",
+                       "whenChanged":  "\/Date(1747384874000)\/",
+                       "whenCreated":  "\/Date(1747383403000)\/"
+                   },
+                   {
+                       "objectSid":  "S-1-5-21-554117985-1834987702-4043321877-519",
+                       "member":  "CN=G-S-T0_Managers,OU=GroupsT0,OU=_Administration,DC=cat,DC=love CN=Administrateur,CN=Users,DC=cat,DC=love",
+                       "distinguishedName":  "CN=Administrateurs de l’entreprise,CN=Users,DC=cat,DC=love",
+                       "whenChanged":  "\/Date(1747384874000)\/",
+                       "whenCreated":  "\/Date(1747383403000)\/"
+                   },
+                   {
+                       "objectSid":  "S-1-5-21-554117985-1834987702-4043321877-517",
+                       "member":  "",
+                       "distinguishedName":  "CN=Éditeurs de certificats,CN=Users,DC=cat,DC=love",
+                       "whenChanged":  "\/Date(1747383403000)\/",
+                       "whenCreated":  "\/Date(1747383403000)\/"
+                   },
+                   {
+                       "objectSid":  "S-1-5-21-554117985-1834987702-4043321877-512",
+                       "member":  "CN=Administrateur,CN=Users,DC=cat,DC=love",
+                       "distinguishedName":  "CN=Admins du domaine,CN=Users,DC=cat,DC=love",
+                       "whenChanged":  "\/Date(1747384874000)\/",
+                       "whenCreated":  "\/Date(1747383403000)\/"
+                   },
+                   {
+                       "objectSid":  "S-1-5-21-554117985-1834987702-4043321877-513",
+                       "member":  "",
+                       "distinguishedName":  "CN=Utilisateurs du domaine,CN=Users,DC=cat,DC=love",
+                       "whenChanged":  "\/Date(1747383403000)\/",
+                       "whenCreated":  "\/Date(1747383403000)\/"
+                   },
+                   {
+                       "objectSid":  "S-1-5-21-554117985-1834987702-4043321877-514",
+                       "member":  "",
+                       "distinguishedName":  "CN=Invités du domaine,CN=Users,DC=cat,DC=love",
+                       "whenChanged":  "\/Date(1747383403000)\/",
+                       "whenCreated":  "\/Date(1747383403000)\/"
+                   },
+                   {
+                       "objectSid":  "S-1-5-21-554117985-1834987702-4043321877-520",
+                       "member":  "CN=Administrateur,CN=Users,DC=cat,DC=love",
+                       "distinguishedName":  "CN=Propriétaires créateurs de la stratégie de groupe,CN=Users,DC=cat,DC=love",
+                       "whenChanged":  "\/Date(1747383403000)\/",
+                       "whenCreated":  "\/Date(1747383403000)\/"
+                   },
+                   {
+                       "objectSid":  "S-1-5-21-554117985-1834987702-4043321877-553",
+                       "member":  "",
+                       "distinguishedName":  "CN=Serveurs RAS et IAS,CN=Users,DC=cat,DC=love",
+                       "whenChanged":  "\/Date(1747383403000)\/",
+                       "whenCreated":  "\/Date(1747383403000)\/"
+                   },
+                   {
+                       "objectSid":  "S-1-5-21-554117985-1834987702-4043321877-571",
+                       "member":  "",
+                       "distinguishedName":  "CN=Groupe de réplication dont le mot de passe RODC est autorisé,CN=Users,DC=cat,DC=love",
+                       "whenChanged":  "\/Date(1747383404000)\/",
+                       "whenCreated":  "\/Date(1747383404000)\/"
+                   },
+                   {
+                       "objectSid":  "S-1-5-21-554117985-1834987702-4043321877-572",
+                       "member":  "CN=Contrôleurs de domaine en lecture seule,CN=Users,DC=cat,DC=love CN=Propriétaires créateurs de la stratégie de groupe,CN=Users,DC=cat,DC=love CN=Admins du domaine,CN=Users,DC=cat,DC=love CN=Éditeurs de certificats,CN=Users,DC=cat,DC=love CN=Administrateurs de l’entreprise,CN=Users,DC=cat,DC=love CN=Administrateurs du schéma,CN=Users,DC=cat,DC=love CN=Contrôleurs de domaine,CN=Users,DC=cat,DC=love CN=krbtgt,CN=Users,DC=cat,DC=love",
+                       "distinguishedName":  "CN=Groupe de réplication dont le mot de passe RODC est refusé,CN=Users,DC=cat,DC=love",
+                       "whenChanged":  "\/Date(1747383404000)\/",
+                       "whenCreated":  "\/Date(1747383404000)\/"
+                   },
+                   {
+                       "objectSid":  "S-1-5-21-554117985-1834987702-4043321877-521",
+                       "member":  "",
+                       "distinguishedName":  "CN=Contrôleurs de domaine en lecture seule,CN=Users,DC=cat,DC=love",
+                       "whenChanged":  "\/Date(1747384874000)\/",
+                       "whenCreated":  "\/Date(1747383404000)\/"
+                   },
+                   {
+                       "objectSid":  "S-1-5-21-554117985-1834987702-4043321877-498",
+                       "member":  "",
+                       "distinguishedName":  "CN=Contrôleurs de domaine d’entreprise en lecture seule,CN=Users,DC=cat,DC=love",
+                       "whenChanged":  "\/Date(1747383404000)\/",
+                       "whenCreated":  "\/Date(1747383404000)\/"
+                   },
+                   {
+                       "objectSid":  "S-1-5-21-554117985-1834987702-4043321877-522",
+                       "member":  "",
+                       "distinguishedName":  "CN=Contrôleurs de domaine clonables,CN=Users,DC=cat,DC=love",
+                       "whenChanged":  "\/Date(1747383404000)\/",
+                       "whenCreated":  "\/Date(1747383404000)\/"
+                   },
+                   {
+                       "objectSid":  "S-1-5-21-554117985-1834987702-4043321877-525",
+                       "member":  "CN=G-S-T0_Managers,OU=GroupsT0,OU=_Administration,DC=cat,DC=love CN=Administrateur,CN=Users,DC=cat,DC=love",
+                       "distinguishedName":  "CN=Protected Users,CN=Users,DC=cat,DC=love",
+                       "whenChanged":  "\/Date(1747384697000)\/",
+                       "whenCreated":  "\/Date(1747383404000)\/"
+                   },
+                   {
+                       "objectSid":  "S-1-5-21-554117985-1834987702-4043321877-526",
+                       "member":  "",
+                       "distinguishedName":  "CN=Administrateurs clés,CN=Users,DC=cat,DC=love",
+                       "whenChanged":  "\/Date(1747384874000)\/",
+                       "whenCreated":  "\/Date(1747383404000)\/"
+                   },
+                   {
+                       "objectSid":  "S-1-5-21-554117985-1834987702-4043321877-527",
+                       "member":  "",
+                       "distinguishedName":  "CN=Administrateurs clés Enterprise,CN=Users,DC=cat,DC=love",
+                       "whenChanged":  "\/Date(1747384874000)\/",
+                       "whenCreated":  "\/Date(1747383404000)\/"
+                   },
+                   {
+                       "objectSid":  "S-1-5-21-554117985-1834987702-4043321877-1101",
+                       "member":  "",
+                       "distinguishedName":  "CN=DnsAdmins,CN=Users,DC=cat,DC=love",
+                       "whenChanged":  "\/Date(1747383453000)\/",
+                       "whenCreated":  "\/Date(1747383453000)\/"
+                   },
+                   {
+                       "objectSid":  "S-1-5-21-554117985-1834987702-4043321877-1102",
+                       "member":  "",
+                       "distinguishedName":  "CN=DnsUpdateProxy,CN=Users,DC=cat,DC=love",
+                       "whenChanged":  "\/Date(1747383453000)\/",
+                       "whenCreated":  "\/Date(1747383453000)\/"
+                   },
+                   {
+                       "objectSid":  "S-1-5-21-554117985-1834987702-4043321877-1103",
+                       "member":  "",
+                       "distinguishedName":  "CN=PSO-EmergencyAccounts-LongLive,CN=Users,DC=cat,DC=love",
+                       "whenChanged":  "\/Date(1747383865000)\/",
+                       "whenCreated":  "\/Date(1747383865000)\/"
+                   },
+                   {
+                       "objectSid":  "S-1-5-21-554117985-1834987702-4043321877-1104",
+                       "member":  "",
+                       "distinguishedName":  "CN=PSO-ServiceAccounts-Legacy,CN=Users,DC=cat,DC=love",
+                       "whenChanged":  "\/Date(1747383865000)\/",
+                       "whenCreated":  "\/Date(1747383865000)\/"
+                   },
+                   {
+                       "objectSid":  "S-1-5-21-554117985-1834987702-4043321877-1105",
+                       "member":  "CN=Administrateur,CN=Users,DC=cat,DC=love",
+                       "distinguishedName":  "CN=PSO-EmergencyAccounts-Standard,CN=Users,DC=cat,DC=love",
+                       "whenChanged":  "\/Date(1747383865000)\/",
+                       "whenCreated":  "\/Date(1747383865000)\/"
+                   },
+                   {
+                       "objectSid":  "S-1-5-21-554117985-1834987702-4043321877-1106",
+                       "member":  "",
+                       "distinguishedName":  "CN=PSO-Users-ChangeEvery3years,CN=Users,DC=cat,DC=love",
+                       "whenChanged":  "\/Date(1747383866000)\/",
+                       "whenCreated":  "\/Date(1747383866000)\/"
+                   },
+                   {
+                       "objectSid":  "S-1-5-21-554117985-1834987702-4043321877-1107",
+                       "member":  "CN=Alain Terrieur,CN=Users,DC=cat,DC=love",
+                       "distinguishedName":  "CN=PSO-Users-ChangeEvery1year,CN=Users,DC=cat,DC=love",
+                       "whenChanged":  "\/Date(1749116147000)\/",
+                       "whenCreated":  "\/Date(1747383866000)\/"
+                   },
+                   {
+                       "objectSid":  "S-1-5-21-554117985-1834987702-4043321877-1108",
+                       "member":  "",
+                       "distinguishedName":  "CN=PSO-Users-ChangeEvery3months,CN=Users,DC=cat,DC=love",
+                       "whenChanged":  "\/Date(1747383866000)\/",
+                       "whenCreated":  "\/Date(1747383866000)\/"
+                   },
+                   {
+                       "objectSid":  "S-1-5-21-554117985-1834987702-4043321877-1109",
+                       "member":  "",
+                       "distinguishedName":  "CN=PSO-ServiceAccounts-ExtendedLife,CN=Users,DC=cat,DC=love",
+                       "whenChanged":  "\/Date(1747383866000)\/",
+                       "whenCreated":  "\/Date(1747383866000)\/"
+                   },
+                   {
+                       "objectSid":  "S-1-5-21-554117985-1834987702-4043321877-1110",
+                       "member":  "CN=DLGUSER01,CN=Users,DC=cat,DC=love",
+                       "distinguishedName":  "CN=PSO-ServiceAccounts-Standard,CN=Users,DC=cat,DC=love",
+                       "whenChanged":  "\/Date(1747383919000)\/",
+                       "whenCreated":  "\/Date(1747383867000)\/"
+                   },
+                   {
+                       "objectSid":  "S-1-5-21-554117985-1834987702-4043321877-1111",
+                       "member":  "",
+                       "distinguishedName":  "CN=PSO-AdminAccounts-SystemPrivileged,CN=Users,DC=cat,DC=love",
+                       "whenChanged":  "\/Date(1747383867000)\/",
+                       "whenCreated":  "\/Date(1747383867000)\/"
+                   },
+                   {
+                       "objectSid":  "S-1-5-21-554117985-1834987702-4043321877-1112",
+                       "member":  "",
+                       "distinguishedName":  "CN=PSO-AdminAccounts-ADdelegatedRight,CN=Users,DC=cat,DC=love",
+                       "whenChanged":  "\/Date(1747383867000)\/",
+                       "whenCreated":  "\/Date(1747383867000)\/"
+                   },
+                   {
+                       "objectSid":  "S-1-5-21-554117985-1834987702-4043321877-1113",
+                       "member":  "",
+                       "distinguishedName":  "CN=PSO-ServiceAccounts-ADdelegatedRight,CN=Users,DC=cat,DC=love",
+                       "whenChanged":  "\/Date(1747383867000)\/",
+                       "whenCreated":  "\/Date(1747383867000)\/"
+                   },
+                   {
+                       "objectSid":  "S-1-5-21-554117985-1834987702-4043321877-1114",
+                       "member":  "CN=Administrateur,CN=Users,DC=cat,DC=love",
+                       "distinguishedName":  "CN=PSO-AdminAccounts-ADhighPrivileges,CN=Users,DC=cat,DC=love",
+                       "whenChanged":  "\/Date(1747383867000)\/",
+                       "whenCreated":  "\/Date(1747383867000)\/"
+                   },
+                   {
+                       "objectSid":  "S-1-5-21-554117985-1834987702-4043321877-1323",
+                       "member":  "CN=Alain Terrieur,CN=Users,DC=cat,DC=love",
+                       "distinguishedName":  "CN=globaleo,CN=Users,DC=cat,DC=love",
+                       "whenChanged":  "\/Date(1749116162000)\/",
+                       "whenCreated":  "\/Date(1749105845000)\/"
+                   },
+                   {
+                       "objectSid":  "S-1-5-21-554117985-1834987702-4043321877-1324",
+                       "member":  "CN=roger oij,CN=Users,DC=cat,DC=love",
+                       "distinguishedName":  "CN=universalo,CN=Users,DC=cat,DC=love",
+                       "whenChanged":  "\/Date(1749116327000)\/",
+                       "whenCreated":  "\/Date(1749105855000)\/"
+                   },
+                   {
+                       "objectSid":  "S-1-5-21-554117985-1834987702-4043321877-1327",
+                       "member":  "CN=globaleo,CN=Users,DC=cat,DC=love",
+                       "distinguishedName":  "CN=dfghjk,CN=Users,DC=cat,DC=love",
+                       "whenChanged":  "\/Date(1749116805000)\/",
+                       "whenCreated":  "\/Date(1749116401000)\/"
+                   },
+                   {
+                       "objectSid":  "S-1-5-21-554117985-1834987702-4043321877-1328",
+                       "member":  "",
+                       "distinguishedName":  "CN=localo,CN=Users,DC=cat,DC=love",
+                       "whenChanged":  "\/Date(1749116814000)\/",
+                       "whenCreated":  "\/Date(1749116814000)\/"
+                   },
+                   {
+                       "objectSid":  "S-1-5-21-554117985-1834987702-4043321877-1329",
+                       "member":  "",
+                       "distinguishedName":  "CN=slksdfg,CN=Users,DC=cat,DC=love",
+                       "whenChanged":  "\/Date(1749118137000)\/",
+                       "whenCreated":  "\/Date(1749118137000)\/"
+                   },
+                   {
+                       "objectSid":  "S-1-5-21-554117985-1834987702-4043321877-1330",
+                       "member":  "",
+                       "distinguishedName":  "CN=jhkjjjjj,CN=Users,DC=cat,DC=love",
+                       "whenChanged":  "\/Date(1749118227000)\/",
+                       "whenCreated":  "\/Date(1749118227000)\/"
+                   },
+                   {
+                       "objectSid":  "S-1-5-21-554117985-1834987702-4043321877-1332",
+                       "member":  "",
+                       "distinguishedName":  "CN=ouiokk,CN=Users,DC=cat,DC=love",
+                       "whenChanged":  "\/Date(1749118381000)\/",
+                       "whenCreated":  "\/Date(1749118381000)\/"
+                   },
+                   {
+                       "objectSid":  "S-1-5-21-554117985-1834987702-4043321877-1333",
+                       "member":  "",
+                       "distinguishedName":  "CN=okok,CN=Users,DC=cat,DC=love",
+                       "whenChanged":  "\/Date(1749118385000)\/",
+                       "whenCreated":  "\/Date(1749118385000)\/"
+                   },
+                   {
+                       "objectSid":  "S-1-5-21-554117985-1834987702-4043321877-1334",
+                       "member":  "CN=Jean Pire,CN=Users,DC=cat,DC=love",
+                       "distinguishedName":  "CN=coucou,CN=Users,DC=cat,DC=love",
+                       "whenChanged":  "\/Date(1749118403000)\/",
+                       "whenCreated":  "\/Date(1749118391000)\/"
+                   },
+                   {
+                       "objectSid":  "S-1-5-21-554117985-1834987702-4043321877-1115",
+                       "member":  "CN=DLGUSER01,CN=Users,DC=cat,DC=love",
+                       "distinguishedName":  "CN=LS-DLG-DomainJoin-Extended,CN=Users,DC=cat,DC=love",
+                       "whenChanged":  "\/Date(1747383919000)\/",
+                       "whenCreated":  "\/Date(1747383907000)\/"
+                   }
+               ],
+    "users":  [
+                  {
+                      "objectSid":  "S-1-5-21-554117985-1834987702-4043321877-500",
+                      "badPasswordTime":  133934948887785868,
+                      "lastlogon":  133935952498006567,
+                      "lockoutTime":  null,
+                      "DisplayName":  null,
+                      "userPrincipalName":  null,
+                      "sAMAccountName":  "Administrateur",
+                      "title":  null,
+                      "l":  null,
+                      "postalCode":  null,
+                      "streetAddress":  null,
+                      "company":  null,
+                      "manager":  null,
+                      "distinguishedName":  "CN=Administrateur,CN=Users,DC=cat,DC=love",
+                      "accountExpires":  9223372036854775807,
+                      "whenChanged":  "\/Date(1749017307000)\/",
+                      "whenCreated":  "\/Date(1747383336000)\/",
+                      "userAccountControl":  1049088
+                  },
+                  {
+                      "objectSid":  "S-1-5-21-554117985-1834987702-4043321877-501",
+                      "badPasswordTime":  0,
+                      "lastlogon":  0,
+                      "lockoutTime":  null,
+                      "DisplayName":  null,
+                      "userPrincipalName":  null,
+                      "sAMAccountName":  "Invité",
+                      "title":  null,
+                      "l":  null,
+                      "postalCode":  null,
+                      "streetAddress":  null,
+                      "company":  null,
+                      "manager":  null,
+                      "distinguishedName":  "CN=Invité,CN=Users,DC=cat,DC=love",
+                      "accountExpires":  9223372036854775807,
+                      "whenChanged":  "\/Date(1747383336000)\/",
+                      "whenCreated":  "\/Date(1747383336000)\/",
+                      "userAccountControl":  66082
+                  },
+                  {
+                      "objectSid":  "S-1-5-21-554117985-1834987702-4043321877-502",
+                      "badPasswordTime":  0,
+                      "lastlogon":  0,
+                      "lockoutTime":  null,
+                      "DisplayName":  null,
+                      "userPrincipalName":  null,
+                      "sAMAccountName":  "krbtgt",
+                      "title":  null,
+                      "l":  null,
+                      "postalCode":  null,
+                      "streetAddress":  null,
+                      "company":  null,
+                      "manager":  null,
+                      "distinguishedName":  "CN=krbtgt,CN=Users,DC=cat,DC=love",
+                      "accountExpires":  9223372036854775807,
+                      "whenChanged":  "\/Date(1747384874000)\/",
+                      "whenCreated":  "\/Date(1747383403000)\/",
+                      "userAccountControl":  514
+                  },
+                  {
+                      "objectSid":  "S-1-5-21-554117985-1834987702-4043321877-1116",
+                      "badPasswordTime":  0,
+                      "lastlogon":  0,
+                      "lockoutTime":  null,
+                      "DisplayName":  "DLGUSER01",
+                      "userPrincipalName":  "DLGUSER01@cat.love",
+                      "sAMAccountName":  "DLGUSER01",
+                      "title":  null,
+                      "l":  null,
+                      "postalCode":  null,
+                      "streetAddress":  null,
+                      "company":  null,
+                      "manager":  null,
+                      "distinguishedName":  "CN=DLGUSER01,CN=Users,DC=cat,DC=love",
+                      "accountExpires":  9223372036854775807,
+                      "whenChanged":  "\/Date(1747383907000)\/",
+                      "whenCreated":  "\/Date(1747383907000)\/",
+                      "userAccountControl":  1049088
+                  },
+                  {
+                      "objectSid":  "S-1-5-21-554117985-1834987702-4043321877-1318",
+                      "badPasswordTime":  0,
+                      "lastlogon":  0,
+                      "lockoutTime":  null,
+                      "DisplayName":  "roger oij",
+                      "userPrincipalName":  "oij@cat.love",
+                      "sAMAccountName":  "oij",
+                      "title":  null,
+                      "l":  null,
+                      "postalCode":  null,
+                      "streetAddress":  null,
+                      "company":  null,
+                      "manager":  null,
+                      "distinguishedName":  "CN=roger oij,CN=Users,DC=cat,DC=love",
+                      "accountExpires":  9223372036854775807,
+                      "whenChanged":  "\/Date(1749056822000)\/",
+                      "whenCreated":  "\/Date(1749018650000)\/",
+                      "userAccountControl":  512
+                  },
+                  {
+                      "objectSid":  "S-1-5-21-554117985-1834987702-4043321877-1325",
+                      "badPasswordTime":  0,
+                      "lastlogon":  0,
+                      "lockoutTime":  null,
+                      "DisplayName":  "oijoij oijoi",
+                      "userPrincipalName":  "albert@cat.love",
+                      "sAMAccountName":  "albert",
+                      "title":  null,
+                      "l":  null,
+                      "postalCode":  null,
+                      "streetAddress":  null,
+                      "company":  null,
+                      "manager":  null,
+                      "distinguishedName":  "CN=oijoij oijoi,CN=Users,DC=cat,DC=love",
+                      "accountExpires":  9223372036854775807,
+                      "whenChanged":  "\/Date(1749115660000)\/",
+                      "whenCreated":  "\/Date(1749115660000)\/",
+                      "userAccountControl":  66048
+                  },
+                  {
+                      "objectSid":  "S-1-5-21-554117985-1834987702-4043321877-1326",
+                      "badPasswordTime":  0,
+                      "lastlogon":  0,
+                      "lockoutTime":  null,
+                      "DisplayName":  "Alain Terrieur",
+                      "userPrincipalName":  "allain.terrieur@cat.love",
+                      "sAMAccountName":  "allain.terrieur",
+                      "title":  null,
+                      "l":  null,
+                      "postalCode":  null,
+                      "streetAddress":  null,
+                      "company":  null,
+                      "manager":  null,
+                      "distinguishedName":  "CN=Alain Terrieur,CN=Users,DC=cat,DC=love",
+                      "accountExpires":  9223372036854775807,
+                      "whenChanged":  "\/Date(1749116125000)\/",
+                      "whenCreated":  "\/Date(1749116125000)\/",
+                      "userAccountControl":  512
+                  },
+                  {
+                      "objectSid":  "S-1-5-21-554117985-1834987702-4043321877-1331",
+                      "badPasswordTime":  0,
+                      "lastlogon":  0,
+                      "lockoutTime":  null,
+                      "DisplayName":  "Jean Pire",
+                      "userPrincipalName":  "jean.pire@cat.love",
+                      "sAMAccountName":  "jean.pire",
+                      "title":  null,
+                      "l":  null,
+                      "postalCode":  null,
+                      "streetAddress":  null,
+                      "company":  null,
+                      "manager":  null,
+                      "distinguishedName":  "CN=Jean Pire,CN=Users,DC=cat,DC=love",
+                      "accountExpires":  9223372036854775807,
+                      "whenChanged":  "\/Date(1749118374000)\/",
+                      "whenCreated":  "\/Date(1749118374000)\/",
+                      "userAccountControl":  512
+                  }
+              ],
+    "computers":  [
+                      {
+                          "objectSid":  "S-1-5-21-554117985-1834987702-4043321877-1321",
+                          "logonCount":  0,
+                          "operatingSystem":  null,
+                          "distinguishedName":  "CN=ezfrefdf,CN=Computers,DC=cat,DC=love",
+                          "whenChanged":  "\/Date(1749068305000)\/",
+                          "whenCreated":  "\/Date(1749068305000)\/"
+                      }
+                  ]
+}
