@@ -56,7 +56,7 @@ def process_objects(json_file):
     for user in users:
         try:
             sql = """
-                INSERT INTO objectusers (objectSid, badPasswordTime, lastLogon, lockoutTime, displayName, userPrincipalName, sAMAccountName, distinguishedName, accountExpires, whenChanged, whenCreated, userAccountControl, created_at, updated_at)
+                INSERT INTO ObjectUsers (objectSid, badPasswordTime, lastLogon, lockoutTime, displayName, userPrincipalName, sAMAccountName, distinguishedName, accountExpires, whenChanged, whenCreated, userAccountControl, created_at, updated_at)
                 VALUES (%s, %s, %s, %s, %s, %s, %s, %s, FROM_UNIXTIME(%s), %s, %s, %s, NOW(), NOW())
                 ON DUPLICATE KEY UPDATE
                 displayName = VALUES(displayName), userPrincipalName = VALUES(userPrincipalName), sAMAccountName = VALUES(sAMAccountName), distinguishedName = VALUES(distinguishedName), accountExpires = VALUES(accountExpires), whenChanged = VALUES(whenChanged), whenCreated = VALUES(whenCreated), userAccountControl = VALUES(userAccountControl), updated_at = NOW()
