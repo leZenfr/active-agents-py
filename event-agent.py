@@ -254,5 +254,5 @@ def monitor_directory(directory):
 
 # Main
 if __name__ == "__main__":
-    directory_to_monitor = "./logs"  # Répertoire contenant les fichiers JSON
+    directory_to_monitor = "./partage/events"  # Répertoire contenant les fichiers JSON
     monitor_directory(directory_to_monitor)
