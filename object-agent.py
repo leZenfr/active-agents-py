@@ -107,7 +107,13 @@ def process_objects(json_file):
 
 # Main
 if __name__ == "__main__":
-    objects_file = "objects.json"
+    objects_dir = "./partage/objects"
     print("Traitement des objets...")
-    process_objects(objects_file)
+
+    for filename in os.listdir(objects_dir):
+        if filename.lower().endswith(".json"):
+            file_path = os.path.join(objects_dir, filename)
+            print(f"Traitement du fichier : {file_path}")
+            process_objects(file_path)
+
     print("Traitement terminé.")
