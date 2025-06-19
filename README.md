@@ -9,3 +9,13 @@ sudo apt install -y python3 python3-pip python3-venv
 ```
 git clone https://github.com/leZenfr/active-agents-py.git
 ```
+
+## Étape 3 : Mettre les scripts dans le répertoire dédié
+```
+cp active-agents-py/object-agent.py /srv/
+cp active-agents-py/event-agent.py /srv/
+```
+
+
+[mysqld]
+sql_mode=""
