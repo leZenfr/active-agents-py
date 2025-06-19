@@ -16,19 +16,18 @@ db_config = {
 
 # Fonction pour convertir les dates JSON au format MySQL
 def convert_json_date(json_date):
-    """
-    Convertit une date JSON du format /Date(1747383403000)/ en format MySQL 'YYYY-MM-DD HH:MM:SS'.
-    Retourne None si la date est absente ou invalide.
-    """
     if not json_date or not isinstance(json_date, str):
         return None
-    match = re.search(r'/Date\((\d+)\)/', json_date)
-    if match:
-        timestamp = int(match.group(1)) // 1000
-        # Vérifie que le timestamp est raisonnable (exclut 0 ou dates trop anciennes)
-        if timestamp > 1000000000:  # ~2001-09-09
-            return datetime.fromtimestamp(timestamp).strftime('%Y-%m-%d %H:%M:%S')
-    return None
+    try:
+        # Extraire les chiffres du format /Date(1747383403000)/
+        timestamp_ms = int(''.join(filter(str.isdigit, json_date)))
+        timestamp = timestamp_ms // 1000  # Convertir en secondes
+        # Si la valeur est trop basse ou trop haute pour être une date raisonnable
+        if timestamp <= 0 or timestamp >= 9999999999:
+            return None
+        return datetime.fromtimestamp(timestamp).strftime('%Y-%m-%d %H:%M:%S')
+    except Exception:
+        return None
 
 # Connexion à la base de données
 def connect_db():
