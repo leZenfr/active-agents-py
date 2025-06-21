@@ -22,8 +22,10 @@ cp active-agents-py/event-agent.py /srv/
 ## Étape 4 : Configurer le script d'installation et le script de lancement
 ```
 cp active-agents-py/install-lib.sh /srv/
+cp active-agents-py/conf-share.sh /srv/
 cp active-agents-py/start.sh /srv/
 
 chmod +x install-lib.sh
+chmod +x conf-share.sh
 chmod +x start.sh
 ```
