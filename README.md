@@ -51,5 +51,3 @@ Démarrer les agents python
 sudo ./start.sh
 ```
 
-## Étape 5 : Créer les dossiers récepteurs
-
