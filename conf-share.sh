@@ -37,7 +37,7 @@ echo "Redémarrage de Samba..."
 sudo systemctl restart smbd
 
 echo "=== ✅ Partage créé avec succès ==="
-echo "➡️  Dossier partagé : \\\\IP_DU_SERVEUR\\ads_partage"
+echo "➡️  Dossier partagé : \\\\IP_DU_SERVEUR\\partage"
 echo "➡️  Identifiants Windows à renseigner :"
 echo "   Nom d'utilisateur : $USERNAME"
 echo "   Mot de passe      : celui que vous venez de définir"
