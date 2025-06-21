@@ -4,8 +4,7 @@
 Il faut dans un premier temps créer le répertoire où les agents agiront
 
 ```
-mkdir -p /srv/partage/objects
-mkdir -p /srv/partage/event
+mkdir -p /srv/partage/
 ```
 
 ## Étape 1 : Installer python et venv 
@@ -15,6 +14,7 @@ sudo apt install -y python3 python3-pip python3-venv
 
 ## Étape 2 : Installer les scripts
 ```
+cd /srv
 git clone https://github.com/leZenfr/active-agents-py.git
 ```
 
