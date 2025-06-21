@@ -10,8 +10,7 @@ DOMAIN_NAME=${DOMAIN_NAME^^}  # majuscules
 
 read -p "FQDN du contrôleur de domaine (ex: dc.exemple.local) : " DC_FQDN
 
-read -p "Dossier à partager (par défaut /srv/partage) : " PARTAGE_DIR
-PARTAGE_DIR=${PARTAGE_DIR:-/srv/partage}
+PARTAGE_DIR="/srv/partage"
 
 SAMBA_CONF="/etc/samba/smb.conf"
 KRB5_CONF="/etc/krb5.conf"
@@ -38,8 +37,15 @@ sudo tee "$KRB5_CONF" > /dev/null <<EOF
     $DOMAIN_NAME = $DOMAIN_REALM
 EOF
 
-echo "=== Création du dossier partagé ==="
-sudo mkdir -p "$PARTAGE_DIR"
+echo "=== Configuration du dossier partagé ==="
+if [ ! -d "$PARTAGE_DIR" ]; then
+  echo "Le dossier $PARTAGE_DIR n'existe pas, création en cours..."
+  sudo mkdir -p "$PARTAGE_DIR"
+else
+  echo "Le dossier $PARTAGE_DIR existe déjà, utilisation du dossier existant."
+fi
+
+echo "Réglage des permissions sur $PARTAGE_DIR..."
 sudo chown root:"$DOMAIN_NAME\Domain Users" "$PARTAGE_DIR" 2>/dev/null || true
 sudo chmod 2770 "$PARTAGE_DIR"
 
