@@ -1,10 +1,18 @@
 #!/bin/bash
 
-# Variables à personnaliser
-DOMAIN_REALM="EXEMPLE.LOCAL"     # Ton domaine AD en majuscules
-DOMAIN_NAME="EXEMPLE"            # Workgroup / NetBIOS name en majuscules
-DC_FQDN="dc.exemple.local"       # FQDN du contrôleur de domaine
-PARTAGE_DIR="/srv/partage"
+echo "=== Configuration Samba + Kerberos AD automatique ==="
+
+read -p "Domaine Kerberos (ex: EXEMPLE.LOCAL) : " DOMAIN_REALM
+DOMAIN_REALM=${DOMAIN_REALM^^}  # majuscules
+
+read -p "Nom NetBIOS / Workgroup (ex: EXEMPLE) : " DOMAIN_NAME
+DOMAIN_NAME=${DOMAIN_NAME^^}  # majuscules
+
+read -p "FQDN du contrôleur de domaine (ex: dc.exemple.local) : " DC_FQDN
+
+read -p "Dossier à partager (par défaut /srv/partage) : " PARTAGE_DIR
+PARTAGE_DIR=${PARTAGE_DIR:-/srv/partage}
+
 SAMBA_CONF="/etc/samba/smb.conf"
 KRB5_CONF="/etc/krb5.conf"
 
@@ -12,7 +20,6 @@ echo "=== Installation des paquets nécessaires ==="
 sudo apt update
 sudo apt install -y samba krb5-user winbind libpam-winbind libnss-winbind
 
-# Configuration de Kerberos
 echo "=== Configuration de Kerberos (/etc/krb5.conf) ==="
 sudo tee "$KRB5_CONF" > /dev/null <<EOF
 [libdefaults]
@@ -36,7 +43,6 @@ sudo mkdir -p "$PARTAGE_DIR"
 sudo chown root:"$DOMAIN_NAME\Domain Users" "$PARTAGE_DIR" 2>/dev/null || true
 sudo chmod 2770 "$PARTAGE_DIR"
 
-# Backup smb.conf si existant
 if [ -f "$SAMBA_CONF" ]; then
   sudo cp "$SAMBA_CONF" "${SAMBA_CONF}.bak-$(date +%Y%m%d-%H%M%S)"
 fi
@@ -84,13 +90,13 @@ echo "=== Redémarrage des services Samba et Winbind ==="
 sudo systemctl restart smbd nmbd winbind
 
 echo "=== Jonction au domaine Active Directory ==="
-read -p "Compte AD avec droits de joindre la machine au domaine (ex: Administrateur) : " AD_USER
+read -p "Compte AD avec droits pour joindre la machine au domaine (ex: Administrateur) : " AD_USER
 sudo net ads join -U "$AD_USER"
 
 if [ $? -eq 0 ]; then
-  echo "=== Jonction réussie au domaine ==="
+  echo "✅ Jonction réussie au domaine"
 else
-  echo "!!! La jonction au domaine a échoué. Vérifie les paramètres et essaie à nouveau."
+  echo "❌ Échec de la jonction au domaine. Vérifiez les paramètres et réessayez."
   exit 1
 fi
 
@@ -99,7 +105,7 @@ sudo systemctl enable smbd nmbd winbind
 sudo systemctl restart smbd nmbd winbind
 
 echo "=== Test de récupération de ticket Kerberos ==="
-read -p "Utilisateur AD à tester (ex: utilisateur@EXEMPLE.LOCAL) : " TEST_USER
+read -p "Utilisateur AD à tester (ex: utilisateur@$DOMAIN_REALM) : " TEST_USER
 kinit "$TEST_USER"
 if klist; then
   echo "✅ Ticket Kerberos obtenu avec succès."
@@ -109,6 +115,6 @@ fi
 
 echo "=== ✅ Configuration terminée ==="
 echo "➡️  Dossier partagé : \\\\$HOSTNAME\\partage"
-echo "➡️  Accès via comptes AD (ex : EXEMPLE\\utilisateur)"
+echo "➡️  Accès via comptes AD (ex : $DOMAIN_NAME\\utilisateur)"
 echo "➡️  Kerberos est utilisé pour l'authentification SMB"
 echo "✍️  Montez le partage depuis Windows en utilisant un compte AD."
