@@ -1,7 +1,12 @@
 # Documentation
 
 ## Prérequis 
-Il faut dans un premier temps configurer le partage entre le serveur windows et le serveur linux afin de pouvoir recevoir les fichiers à traiter.
+Il faut dans un premier temps créer le répertoire où les agents agiront
+
+```
+mkdir -p /srv/partage/objects
+mkdir -p /srv/partage/event
+```
 
 ## Étape 1 : Installer python et venv 
 ```
