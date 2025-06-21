@@ -1,25 +1,23 @@
 #!/bin/bash
 
-
 PARTAGE_DIR="/srv/partage"
 SAMBA_CONF="/etc/samba/smb.conf"
-echo "=== Création d'un partage Samba sécurisé ==="
-
+echo "=== Création d'un partage Samba sécurisé avec NTLMv2 ==="
 
 read -p "Nom de l'utilisateur Samba à créer : " USERNAME
 
+
 sudo mkdir -p "$PARTAGE_DIR"
+sudo groupadd -f sambashare
+sudo useradd -M -s /sbin/nologin -G sambashare "$USERNAME"
 sudo chown root:"$USERNAME" "$PARTAGE_DIR"
 sudo chmod 2770 "$PARTAGE_DIR"
-
-sudo useradd -M -s /sbin/nologin "$USERNAME"
 
 echo "Définissez un mot de passe Samba pour $USERNAME (ce mot de passe sera utilisé sur Windows) :"
 sudo smbpasswd -a "$USERNAME"
 
-sudo chown root:"$USERNAME" "$PARTAGE_DIR"
-sudo chmod 770 "$PARTAGE_DIR"
 
+if ! grep -q "^\[partage\]" "$SAMBA_CONF"; then
 echo "
 [partage]
    path = $PARTAGE_DIR
@@ -31,6 +29,23 @@ echo "
    create mask = 0660
    directory mask = 0770
 " | sudo tee -a "$SAMBA_CONF" > /dev/null
+fi
+
+
+if ! grep -q "ntlm auth" "$SAMBA_CONF"; then
+  echo "
+[global]
+   ntlm auth = yes
+   client min protocol = SMB2
+   client max protocol = SMB3
+   client NTLMv2 auth = yes
+" | sudo tee -a "$SAMBA_CONF" > /dev/null
+else
+  sudo sed -i 's/ntlm auth.*/ntlm auth = yes/' "$SAMBA_CONF"
+  sudo sed -i 's/client min protocol.*/client min protocol = SMB2/' "$SAMBA_CONF"
+  sudo sed -i 's/client max protocol.*/client max protocol = SMB3/' "$SAMBA_CONF"
+  sudo sed -i 's/client NTLMv2 auth.*/client NTLMv2 auth = yes/' "$SAMBA_CONF"
+fi
 
 
 echo "Redémarrage de Samba..."
@@ -41,4 +56,4 @@ echo "➡️  Dossier partagé : \\\\IP_DU_SERVEUR\\partage"
 echo "➡️  Identifiants Windows à renseigner :"
 echo "   Nom d'utilisateur : $USERNAME"
 echo "   Mot de passe      : celui que vous venez de définir"
-echo "✍️  Notez bien ces identifiants pour les entrer lors de la connexion au partage sous Windows."
+echo "✍️  NTLMv2 est maintenant requis pour la connexion."
