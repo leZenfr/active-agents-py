@@ -48,6 +48,6 @@ sudo ./conf-share.sh
 
 Démarrer les agents python
 ```
-sudo ./start.sh
+sudo bash start.sh
 ```
 
