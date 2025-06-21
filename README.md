@@ -34,17 +34,17 @@ sudo chmod +x start.sh
 
 Installation des librairies requises dans un venv
 ```
-./install-lib.sh
+sudo ./install-lib.sh
 ```
 
 Configuration du partage
 ```
-./conf-share.sh
+sudo ./conf-share.sh
 ```
 
 Démarrer les agents python
 ```
-./start.sh
+sudo ./start.sh
 ```
 
 
