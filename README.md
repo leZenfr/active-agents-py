@@ -29,3 +29,22 @@ chmod +x install-lib.sh
 chmod +x conf-share.sh
 chmod +x start.sh
 ```
+
+## Étape 5 : Exécuter les scripts dans l'ordre
+
+Installation des librairies requises dans un venv
+```
+./install-lib.sh
+```
+
+Configuration du partage
+```
+./conf-share.sh
+```
+
+Démarrer les agents python
+```
+./start.sh
+```
+
+
