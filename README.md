@@ -18,3 +18,12 @@ git clone https://github.com/leZenfr/active-agents-py.git
 cp active-agents-py/object-agent.py /srv/
 cp active-agents-py/event-agent.py /srv/
 ```
+
+## Étape 4 : Configurer le script d'installation et le script de lancement
+```
+cp active-agents-py/install-lib.sh /srv/
+cp active-agents-py/start.sh /srv/
+
+chmod +x install-lib.sh
+chmod +x start.sh
+```
