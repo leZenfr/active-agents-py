@@ -47,4 +47,8 @@ Démarrer les agents python
 sudo ./start.sh
 ```
 
-
+## Étape 5 : Créer les dossiers récepteurs
+```
+sudo mkdir -p /srv/partage/objects
+sudo mkdir -p /srv/partage/events
+```
