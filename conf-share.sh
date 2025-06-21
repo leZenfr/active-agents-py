@@ -1,62 +1,114 @@
 #!/bin/bash
 
+# Variables à personnaliser
+DOMAIN_REALM="EXEMPLE.LOCAL"     # Ton domaine AD en majuscules
+DOMAIN_NAME="EXEMPLE"            # Workgroup / NetBIOS name en majuscules
+DC_FQDN="dc.exemple.local"       # FQDN du contrôleur de domaine
 PARTAGE_DIR="/srv/partage"
 SAMBA_CONF="/etc/samba/smb.conf"
-echo "=== Création d'un partage Samba sécurisé avec NTLMv2 ==="
+KRB5_CONF="/etc/krb5.conf"
 
-read -p "Nom de l'utilisateur Samba à créer : " USERNAME
+echo "=== Installation des paquets nécessaires ==="
+sudo apt update
+sudo apt install -y samba krb5-user winbind libpam-winbind libnss-winbind
 
+# Configuration de Kerberos
+echo "=== Configuration de Kerberos (/etc/krb5.conf) ==="
+sudo tee "$KRB5_CONF" > /dev/null <<EOF
+[libdefaults]
+    default_realm = $DOMAIN_REALM
+    dns_lookup_realm = false
+    dns_lookup_kdc = true
 
+[realms]
+    $DOMAIN_REALM = {
+        kdc = $DC_FQDN
+        admin_server = $DC_FQDN
+    }
+
+[domain_realm]
+    .$DOMAIN_NAME = $DOMAIN_REALM
+    $DOMAIN_NAME = $DOMAIN_REALM
+EOF
+
+echo "=== Création du dossier partagé ==="
 sudo mkdir -p "$PARTAGE_DIR"
-sudo groupadd -f sambashare
-sudo useradd -M -s /sbin/nologin -G sambashare "$USERNAME"
-sudo chown root:"$USERNAME" "$PARTAGE_DIR"
+sudo chown root:"$DOMAIN_NAME\Domain Users" "$PARTAGE_DIR" 2>/dev/null || true
 sudo chmod 2770 "$PARTAGE_DIR"
 
-echo "Définissez un mot de passe Samba pour $USERNAME (ce mot de passe sera utilisé sur Windows) :"
-sudo smbpasswd -a "$USERNAME"
-
-
-if ! grep -q "^\[partage\]" "$SAMBA_CONF"; then
-echo "
-[partage]
-   path = $PARTAGE_DIR
-   valid users = $USERNAME
-   read only = no
-   writable = yes
-   browsable = yes
-   guest ok = no
-   create mask = 0660
-   directory mask = 0770
-" | sudo tee -a "$SAMBA_CONF" > /dev/null
+# Backup smb.conf si existant
+if [ -f "$SAMBA_CONF" ]; then
+  sudo cp "$SAMBA_CONF" "${SAMBA_CONF}.bak-$(date +%Y%m%d-%H%M%S)"
 fi
 
-
-if grep -q "^\[global\]" "$SAMBA_CONF"; then
-  sudo sed -i '/^\[global\]/,/^\[/ s/^server min protocol.*/server min protocol = SMB2_02/' "$SAMBA_CONF"
-  sudo sed -i '/^\[global\]/,/^\[/ s/^server max protocol.*/server max protocol = SMB3/' "$SAMBA_CONF"
-  sudo sed -i '/^\[global\]/,/^\[/ s/^client min protocol.*/client min protocol = SMB2_02/' "$SAMBA_CONF"
-  sudo sed -i '/^\[global\]/,/^\[/ s/^client max protocol.*/client max protocol = SMB3/' "$SAMBA_CONF"
-  sudo sed -i '/^\[global\]/,/^\[/ s/^ntlm auth.*/ntlm auth = ntlmv2-only/' "$SAMBA_CONF"
-else
-  echo "
+echo "=== Configuration de Samba (/etc/samba/smb.conf) ==="
+sudo tee "$SAMBA_CONF" > /dev/null <<EOF
 [global]
+   workgroup = $DOMAIN_NAME
+   realm = $DOMAIN_REALM
+   security = ADS
+
+   dedicated keytab file = /etc/krb5.keytab
+   kerberos method = secrets and keytab
+
+   winbind use default domain = yes
+   winbind offline logon = false
+   idmap config * : backend = tdb
+   idmap config * : range = 10000-20000
+   idmap config $DOMAIN_NAME : backend = rid
+   idmap config $DOMAIN_NAME : range = 100000-200000
+
+   template shell = /bin/bash
+   template homedir = /home/%D/%U
+
+   client signing = yes
+   server signing = yes
+   client use spnego = yes
+
    server min protocol = SMB2_02
    server max protocol = SMB3
    client min protocol = SMB2_02
    client max protocol = SMB3
    ntlm auth = ntlmv2-only
-" | sudo tee -a "$SAMBA_CONF" > /dev/null
+
+[partage]
+   path = $PARTAGE_DIR
+   read only = no
+   browsable = yes
+   valid users = @"$DOMAIN_NAME\Domain Users"
+   create mask = 0660
+   directory mask = 2770
+EOF
+
+echo "=== Redémarrage des services Samba et Winbind ==="
+sudo systemctl restart smbd nmbd winbind
+
+echo "=== Jonction au domaine Active Directory ==="
+read -p "Compte AD avec droits de joindre la machine au domaine (ex: Administrateur) : " AD_USER
+sudo net ads join -U "$AD_USER"
+
+if [ $? -eq 0 ]; then
+  echo "=== Jonction réussie au domaine ==="
+else
+  echo "!!! La jonction au domaine a échoué. Vérifie les paramètres et essaie à nouveau."
+  exit 1
 fi
 
+echo "=== Démarrage / activation des services ==="
+sudo systemctl enable smbd nmbd winbind
+sudo systemctl restart smbd nmbd winbind
 
+echo "=== Test de récupération de ticket Kerberos ==="
+read -p "Utilisateur AD à tester (ex: utilisateur@EXEMPLE.LOCAL) : " TEST_USER
+kinit "$TEST_USER"
+if klist; then
+  echo "✅ Ticket Kerberos obtenu avec succès."
+else
+  echo "⚠️ Échec d'obtention du ticket Kerberos."
+fi
 
-echo "Redémarrage de Samba..."
-sudo systemctl restart smbd
-
-echo "=== ✅ Partage créé avec succès ==="
-echo "➡️  Dossier partagé : \\\\IP_DU_SERVEUR\\partage"
-echo "➡️  Identifiants Windows à renseigner :"
-echo "   Nom d'utilisateur : $USERNAME"
-echo "   Mot de passe      : celui que vous venez de définir"
-echo "✍️  NTLMv2 est maintenant requis pour la connexion."
+echo "=== ✅ Configuration terminée ==="
+echo "➡️  Dossier partagé : \\\\$HOSTNAME\\partage"
+echo "➡️  Accès via comptes AD (ex : EXEMPLE\\utilisateur)"
+echo "➡️  Kerberos est utilisé pour l'authentification SMB"
+echo "✍️  Montez le partage depuis Windows en utilisant un compte AD."
