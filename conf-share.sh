@@ -32,7 +32,13 @@ echo "
 fi
 
 
-if ! grep -q "server min protocol" "$SAMBA_CONF"; then
+if grep -q "^\[global\]" "$SAMBA_CONF"; then
+  sudo sed -i '/^\[global\]/,/^\[/ s/^server min protocol.*/server min protocol = SMB2_02/' "$SAMBA_CONF"
+  sudo sed -i '/^\[global\]/,/^\[/ s/^server max protocol.*/server max protocol = SMB3/' "$SAMBA_CONF"
+  sudo sed -i '/^\[global\]/,/^\[/ s/^client min protocol.*/client min protocol = SMB2_02/' "$SAMBA_CONF"
+  sudo sed -i '/^\[global\]/,/^\[/ s/^client max protocol.*/client max protocol = SMB3/' "$SAMBA_CONF"
+  sudo sed -i '/^\[global\]/,/^\[/ s/^ntlm auth.*/ntlm auth = ntlmv2-only/' "$SAMBA_CONF"
+else
   echo "
 [global]
    server min protocol = SMB2_02
@@ -41,12 +47,6 @@ if ! grep -q "server min protocol" "$SAMBA_CONF"; then
    client max protocol = SMB3
    ntlm auth = ntlmv2-only
 " | sudo tee -a "$SAMBA_CONF" > /dev/null
-else
-  sudo sed -i 's/server min protocol.*/server min protocol = SMB2_02/' "$SAMBA_CONF"
-  sudo sed -i 's/server max protocol.*/server max protocol = SMB3/' "$SAMBA_CONF"
-  sudo sed -i 's/client min protocol.*/client min protocol = SMB2_02/' "$SAMBA_CONF"
-  sudo sed -i 's/client max protocol.*/client max protocol = SMB3/' "$SAMBA_CONF"
-  sudo sed -i 's/ntlm auth.*/ntlm auth = ntlmv2-only/' "$SAMBA_CONF"
 fi
 
 
